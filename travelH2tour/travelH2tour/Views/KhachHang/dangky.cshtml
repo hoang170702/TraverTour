@@ -1,0 +1,95 @@
+﻿@model IEnumerable<travelH2tour.Models.KHACHHANG>
+@{
+    ViewBag.Title = "dangky";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="text-align:center"> ĐĂNG KÝ DU KHÁCH </h2>
+<div style="padding:0 350px; text-align:center">
+    <table class="table">
+
+        @using (Html.BeginForm("dangky", "KhachHang"))
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Họ tên khách hàng:</td>
+                <td>
+                    @Html.TextBox("hotenkh")
+                    @ViewData["loiht"]
+                </td> @*sử dụng để truyền dữ liệu giữa controller và view*@
+            </tr>
+
+
+
+            <tr style="height:40px">
+                <td>Tên đăng nhập:</td>
+                <td>
+                    @Html.TextBox("tendn")
+                    @ViewData["loitdn"]
+                </td> @*sử dụng để truyền dữ liệu giữa controller và view*@
+            </tr>
+
+            <tr style="height:40px">
+                <td>Mật khẩu:</td>
+                <td>
+                    @Html.Password("matkhau")
+                    @ViewData["loimk"]
+                </td> @*sử dụng để truyền dữ liệu giữa controller và view*@
+            </tr>
+
+            <tr style="height:40px">
+                <td>Nhập lại Mật khẩu:</td>
+                <td>
+                    @Html.Password("nlmatkhau")
+                    @ViewData["loinlmk"]
+                </td> @*sử dụng để truyền dữ liệu giữa controller và view*@
+            </tr>
+
+            <tr style="height:40px">
+                <td>Nhập Email:</td>
+                <td>
+                    @Html.TextBox("email")
+                    @ViewData["loiemail"]
+                </td> @*sử dụng để truyền dữ liệu giữa controller và view*@
+            </tr>
+
+            <tr style="height:40px">
+                <td>Giới tính:</td>
+                <td>
+                    @Html.RadioButton("gioitinh", "Nam", true) Nam
+                    @Html.RadioButton("gioitinh", "Nữ", false) Nữ
+                    @ViewData["loigt"]
+                </td>
+            </tr>
+
+            <tr style="height:40px">
+                <td>Nhập ngày sinh:</td>
+                <td>
+                    <input type="date" name="NGAYSINH" />
+                    @ViewData["lns"]
+                </td>
+            </tr>
+
+            <tr style="height:40px">
+                <td>Nhập CMND/CCCD:</td>
+                <td>
+                    @Html.TextBox("cccd")
+                    @ViewData["loicccd"]
+                </td>
+            </tr>
+
+            <tr style="height:40px">
+                <td>Hình ảnh du khách:</td>
+                <td>
+                    <input type="file" name="ImageFile" id="ImageFile" accept=".jpg,.png" @*chuyển chế độ tải lên theo accept*@ />
+                </td>
+            </tr>
+
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <input type="submit" name="ĐĂNG KÝ" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>

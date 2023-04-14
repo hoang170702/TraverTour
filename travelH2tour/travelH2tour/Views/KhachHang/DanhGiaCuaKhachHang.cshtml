@@ -1,0 +1,15 @@
+﻿@model IEnumerable<travelH2tour.Models.CT_TOUR>
+
+@foreach (var item in Model)
+{
+    <div class="text-center pb-4">
+        <img class="img-fluid mx-auto" src="~/img/@item.PHIEUDATTOUR.KHACHHANG.HINHKHACHHANG" style="width: 100px; height: 100px;">
+        <div class="testimonial-text bg-white p-4 mt-n5">
+            <p class="mt-5">
+                @item.DANHGIATUKHACHHANG
+            </p>
+            <h5 class="text-truncate">@item.PHIEUDATTOUR.KHACHHANG.TENKH</h5>u
+            <span>(@item.NGAYDI - @item.NGAYVE)</span>
+        </div>
+    </div>
+}

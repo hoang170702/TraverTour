@@ -1,0 +1,129 @@
+﻿@model travelH2tour.Models.CT_TOUR
+
+@{
+    ViewBag.Title = "toursReviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    textarea {
+        width: 100%;
+        height: 200px;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 5px;
+        resize: vertical; /* cho phép chỉnh sửa chiều dọc */
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MAPDT)
+        @Html.HiddenFor(model => model.MATOUR)
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                <p>@ViewData["ErrorMessage"].ToString()</p>
+            </div>
+        }
+        <table class="table">
+
+            <thead class="bg-primary">
+                <tr class="text-white">
+                    <th>Ngày Đi</th>
+                    <th>Ngày Về</th>
+                    <th>Số lượng khách hàng</th>
+                    <th>Đơn giá</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group ">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NGAYDI, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NGAYDI, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NGAYVE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NGAYVE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SOLUONGKHACH, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SOLUONGKHACH, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="form-group">
+            <h3 class="text-primary">Đánh giá từ khách hàng</h3>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.DANHGIATUKHACHHANG, new { htmlAttributes = new { @class = "form-control myTextAria", @oninput = "countChars()" }, id = "DANHGIATUKHACHHANG" })
+                @Html.ValidationMessageFor(model => model.DANHGIATUKHACHHANG, "", new { @class = "text-danger" })
+                <div id="countWord"></div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đánh Giá" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    function countChars() {
+        var val = document.getElementById("DANHGIATUKHACHHANG").value;
+        var len = val.length;
+        document.getElementById("countWord").innerHTML = len + " ký tự";
+    }
+
+    // tạo request AJAX
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText); // hiển thị phản hồi từ server (nếu có)
+        }
+    };
+    xhttp.open("POST", "/Tour/toursReviews", true); // thay đổi tên Controller và Action tương ứng
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var data = "text=" + val; // chuẩn bị dữ liệu để gửi đi
+    xhttp.send(data); // gửi request đi
+</script>
+

@@ -1,0 +1,57 @@
+﻿@model  PagedList.PagedList<travelH2tour.Models.TOURDL>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "TrangTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mb-3 pb-3">
+    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+    <h1>Pefect Tour Packages</h1>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="package-item bg-white mb-2">
+                <img class="img-fluid" src="~/img/@item.HINHTOUR" alt="">
+                <div class="p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>@item.DIADIEM.TENDIADIEM</small>
+                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i> </small>
+                        <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@item.LOAITOUR.TENLOAITOUR</small>
+                    </div>
+                    <p class="h5 text-decoration-none" href="">Discover amazing places of the world with us</p>
+                    <div class="border-top mt-4 pt-4">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="m-0">$@item.TIENTOUR</h5>
+                            <a href="@Url.Action("Detailstours","Tour",new {id = item.MATOUR})" class="btn btn-primary ">Details</a>
+                            <a href="@Url.Action("ThemGioHang","GioHang", new {id = item.MATOUR,strURL = Request.Url.ToString()})" class="btn btn-outline-primary"><i class="fas fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="card-footer text-primary">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang ]">
+        @Html.PagedListPager(Model, page => Url.Action("TrangTour", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+
+            .MenuTrang li a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+    </style>
+</div>
+

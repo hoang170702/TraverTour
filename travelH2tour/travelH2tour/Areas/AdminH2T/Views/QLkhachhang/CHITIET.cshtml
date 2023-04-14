@@ -1,0 +1,96 @@
+﻿@model travelH2tour.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "CHITIET";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="col-md-6">
+            <strong class="text-danger">
+                CHI TIẾT KHÁCH HÀNG
+            </strong>
+        </div>
+    </div>
+    <div class="card-body">
+        
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.MAKH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MAKH)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TENKH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TENKH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TAIKHOAN_KH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TAIKHOAN_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.MATKHAU_KH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MATKHAU_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.GIOITINH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.GIOITINH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.NGAYSINH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NGAYSINH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.CMND_CCCD_KH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CMND_CCCD_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.HINHKHACHHANG)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.HINHKHACHHANG)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.NGAYTAO)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NGAYTAO)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.MAKH }, new { @class = "btn btn-primary" })
+            <a href="@Url.Action("DS_KH","QLkhachhang")"  class="btn btn-sm btn-secondary"> <i class="fas fa-arrow-circle-left">Về lại danh sách</i></a>
+        </div>
+    </div>
+</div>

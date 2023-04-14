@@ -1,0 +1,40 @@
+﻿@model IEnumerable<travelH2tour.Models.DICHVU>
+
+@{
+    ViewBag.Title = "DS_DV";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<h2>DS_DV</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIADV)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIADV)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MADV }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MADV }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MADV })
+        </td>
+    </tr>
+}
+
+</table>

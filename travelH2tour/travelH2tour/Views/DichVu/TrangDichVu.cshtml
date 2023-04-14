@@ -1,0 +1,24 @@
+﻿@model IEnumerable<travelH2tour.Models.DICHVU>
+@{
+    ViewBag.Title = "TrangDichVu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mb-3 pb-3">
+    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
+    <h1>Tours & Travel Services</h1>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                <i class="fab fa-servicestack mx-auto mb-4 fa-2x"></i>
+                <h5 class="mb-2">@item.TENDV</h5>
+                <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+            </div>
+        </div>
+    }
+</div>
+

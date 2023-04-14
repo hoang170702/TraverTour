@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "ThayMatKhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center   ">Change Password</h2>
+<div style="padding: 0 350px; text-align: center">
+    <table class="table" align="center">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Mật Khẩu Cũ  </td>
+                <td><input type="password" name="matkhaucu" />@ViewData["loimkcu"]</td>
+            </tr>
+            <tr style="height:40px">
+                <td>Mật Khẩu Mới </td>
+                <td><input type="password" name="matkhaumoi" />@ViewData["loimkMoi"]</td>
+            </tr>
+            <tr style="height:40px">
+                <td>Nhập Lại Mật khẩu mới </td>
+                <td><input type="password" name="nhaplaimatkhaumoi" />@ViewData["loinhaplaimkmoi"]</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Change Password" ;
+                </td>
+            </tr>
+        }
+    </table>
+</div>

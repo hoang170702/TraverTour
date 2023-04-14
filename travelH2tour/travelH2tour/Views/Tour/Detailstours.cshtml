@@ -1,0 +1,31 @@
+﻿
+
+@{
+    ViewBag.Title = "Detailstours";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="white-box text-center"><img src="~/img/@Model.HINHTOUR" style="width: 350px; height:300px" class="img-responsive"></div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-5">@Model.DIADIEM.TENDIADIEM</h4>
+                    <p>@Model.MOTA</p>
+                    <h2 class="mt-5">
+                        $@Model.TIENTOUR<small class="text-success"></small>
+                    </h2>
+
+                    <a href="@Url.Action("ThemGioHang", "GioHang", new { id = Model.MATOUR, strURL = Request.Url.ToString() })" class="btn btn-outline-primary"><i class="fas fa-cart-plus"></i></a>
+
+                    <a href="@Url.Action("BookTourNow", "GioHang", new { id = Model.MATOUR})" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

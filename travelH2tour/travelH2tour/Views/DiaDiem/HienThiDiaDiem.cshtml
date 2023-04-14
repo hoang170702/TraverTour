@@ -1,0 +1,14 @@
+﻿@model IEnumerable<travelH2tour.Models.DIADIEM>
+
+
+@foreach (var item in Model)
+{
+    <div style="text-align:center" class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="~/img/@item.HINHDIADIEM" alt="@item.TENDIADIEM">
+            <a class="destination-overlay text-white text-decoration-none" href="@Url.Action("CT_DiaDiem", "DiaDiem", new {id = item.MADIADIEM})">
+                <h5 class="text-white">@item.TENDIADIEM</h5>
+            </a>
+        </div>
+    </div>
+}

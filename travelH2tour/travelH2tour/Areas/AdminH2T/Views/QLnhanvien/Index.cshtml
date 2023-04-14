@@ -1,0 +1,91 @@
+﻿
+@using PagedList.Mvc;
+@using travelH2tour.Models;
+@model  PagedList.PagedList<travelH2tour.Models.NHANVIEN>
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger">
+                        DANH SÁCH NHÂN VIÊN
+                    </strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("THEM_NV","QLnhanvien")" class="btn btn-sm btn-success">Thêm</a>
+                    <a href="@Url.Action("THUNGRAC","QLnhanvien")" class="btn btn-sm btn-danger">Thùng rác</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Họ tên</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>CMND</th>
+                    <th>Ảnh Nhân viên</th>
+                    <th>Số tour hoàn thành</th>
+                    <th>Ngày tạo</th>
+                    <th>Chức năng</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center"><input type="checkbox" /></td>
+                        <td class="text-center">@item.MANV</td>
+                        <td>@item.TENNV</td>
+                        <td class="text-center">@item.GIOITINH</td>
+                        <td>@item.NGAYSINH</td>
+                        <td>@item.CMND_CCCD_NV</td>
+                        <td><img style="width:120px" src="@Url.Content("~/dbHinhnv/"+ item.HINHNHANVIEN)" /></td>
+                        <td>@item.SOTOURHOANTHANH</td>
+                        <td>@item.NGAYTAO</td>
+                        <td class="text-center">
+                            @if (item.TRANGTHAI == 1)
+                            {
+                                <a href="@Url.Action("TRANGTHAI","QLnhanvien",new { id = item.MANV })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("TRANGTHAI","QLnhanvien",new { id = item.MANV })" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
+                            }
+                            <a href="@Url.Action("CAPNHAT_NV","QLnhanvien",new { id = item.MANV })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="@Url.Action("CHITIET","QLnhanvien",new { id = item.MANV })" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                            <a href="@Url.Action("Xoatam","QLnhanvien",new { id = item.MANV })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+        <div class="card-footer">
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+            <div class="MenuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("", new { page = page }))
+            </div>
+            <style>
+                .MenuTrang li {
+                    display: inline;
+                }
+
+                    .MenuTrang li a {
+                        color: black;
+                        float: left;
+                        padding: 8px 16px;
+                        text-decoration: none;
+                    }
+            </style>
+        </div>
+    </div>
+</section>
+

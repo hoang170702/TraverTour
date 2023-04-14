@@ -1,0 +1,58 @@
+﻿@model IEnumerable<travelH2tour.Models.TOURDL>
+
+@{
+    ViewBag.Title = "DS_T";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<h2>DS_T</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MADIADIEM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MALOAITOUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HINHTOUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIENTOUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MADIADIEM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MALOAITOUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HINHTOUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIENTOUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MATOUR }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MATOUR }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MATOUR })
+        </td>
+    </tr>
+}
+
+</table>

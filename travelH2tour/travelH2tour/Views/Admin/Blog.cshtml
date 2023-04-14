@@ -1,0 +1,23 @@
+﻿@model IEnumerable<travelH2tour.Models.BLOG>
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+        <div class="blog-item">
+            <div class="position-relative">
+                <img class="img-fluid w-100" src="~/img/@item.HINHBLOG" alt="">
+                <div class="blog-date">
+                    <h6 class="font-weight-bold mb-n1">@item.NGAYDANG.Value.Month</h6>
+                    <small class="text-white text-uppercase">@item.NGAYDANG.Value.Year</small>
+                </div>
+            </div>
+            <div class="bg-white p-4">
+                <div class="d-flex mb-2">
+                    <a class="text-primary text-uppercase text-decoration-none" href="">@item.TAIKHOAN_ADMIN.ToUpper()</a>
+                    <span class="text-primary px-2">|</span>
+                    <a class="text-primary text-uppercase text-decoration-none" href="">@item.TENBLOG.ToUpper()</a>
+                </div>
+                <a class="h5 m-0 text-decoration-none" href="" style="display:inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 24ch;">@item.NOIDUNG</a>
+            </div>
+        </div>
+    </div>
+}

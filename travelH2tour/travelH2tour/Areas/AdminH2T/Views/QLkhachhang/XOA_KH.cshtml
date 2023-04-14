@@ -1,0 +1,101 @@
+﻿@model travelH2tour.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "XOA_KH";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="col-md-6">
+            <strong class="text-danger">
+                XÓA KHÁCH HÀNG
+            </strong>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                <label for="name">Mã khách hàng:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MAKH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Họ tên khách:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TENKH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Tài khoản:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TAIKHOAN_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Mật khẩu:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MATKHAU_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Email:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Giới tính:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.GIOITINH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Ngày sinh:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NGAYSINH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">CMND:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CMND_CCCD_KH)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Hình ảnh:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.HINHKHACHHANG)
+            </dd>
+
+            <dt class="col-sm-3">
+                <label for="name">Ngày tạo:</label>
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NGAYTAO)
+            </dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <h4>Bạn có chắc chắn muốn xóa khách hàng có mã số @ViewBag.MAKH ?</h4>
+    <input type="submit" value="Xóa" class="btn btn-default" />
+    <a href="@Url.Action("Index","QLkhachhang")" class="btn btn-sm btn-info">Về lại danh sách</a>
+</div>
+    }
+</div>

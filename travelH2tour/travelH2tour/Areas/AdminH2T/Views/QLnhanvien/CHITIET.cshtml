@@ -1,0 +1,187 @@
+﻿@model travelH2tour.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "CHITIET";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<h2>CHITIET</h2>
+
+<div>
+    <h4>NHANVIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TAIKHOAN_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAIKHOAN_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATKHAU_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TENNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIOITINH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYSINH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSINH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CMND_CCCD_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CMND_CCCD_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HINHNHANVIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHNHANVIEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTOURHOANTHANH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOTOURHOANTHANH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYTAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTAO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MANV }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="card">
+    <div class="card-header">
+        <div class="col-md-6">
+            <strong class="text-danger">
+                CHI TIẾT NHÂN VIÊN
+            </strong>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.MANV)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MANV)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TAIKHOAN_NV)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TAIKHOAN_NV)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.MATKHAU_NV)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.MATKHAU_NV)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TENNV)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TENNV)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.GIOITINH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.GIOITINH)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.NGAYSINH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.NGAYSINH)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.CMND_CCCD_NV)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CMND_CCCD_NV)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.HINHNHANVIEN)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.HINHNHANVIEN)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.SOTOURHOANTHANH)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.SOTOURHOANTHANH)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TRANGTHAI)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TRANGTHAI)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.MANV }, new { @class = "btn btn-primary" })
+            <a href="@Url.Action("","QLnhanvien")" class="btn btn-sm btn-secondary"> <i class="fas fa-arrow-circle-left">Về lại danh sách</i></a>
+        </div>
+    </div>
+</div>

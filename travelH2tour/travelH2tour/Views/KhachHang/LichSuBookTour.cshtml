@@ -1,0 +1,38 @@
+﻿@model IEnumerable<travelH2tour.Models.CT_TOUR>
+@{
+    ViewBag.Title = "LichSuBookTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="margin-top:20px">Tour History</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã Phiếu Đặt Tour</th>
+            <th>Tên Khách Hàng</th>
+            <th>Mã Tour</th>
+            <th>Tên Loại Tour</th>
+            <th>Ngày đi</th>
+            <th>Ngày Về</th>
+            <th>Số lượng khách</th>
+            <th>Đơn Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="success">
+                <td>@item.MAPDT</td>
+                <td>@item.PHIEUDATTOUR.KHACHHANG.TENKH</td>
+                <td>@item.MATOUR</td>
+                <td>@item.TOURDL.LOAITOUR.TENLOAITOUR</td>
+                <td>@item.NGAYDI</td>
+                <td>@item.NGAYVE</td>
+                <td>@item.SOLUONGKHACH</td>
+                <td>@item.DONGIA</td>
+                <td><a href="@Url.Action("toursReviews", "Tour", new { idTour = item.MATOUR,idPDT = item.PHIEUDATTOUR.MAPDT })" class="btn btn-primary">Đánh giá tour</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

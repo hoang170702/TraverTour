@@ -1,0 +1,60 @@
+﻿@using travelH2tour.Models
+@{
+    ViewBag.Title = "PayOnl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input[type=submit] {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+
+<h2>PayONL</h2>
+<h2>Thong tin dat hang</h2>
+@{
+    KHACHHANG kh = (KHACHHANG)Session["KHACHHANG"];
+}
+
+<table class="table ">
+    @using (Html.BeginForm("PaymentWithPaypal", "ThanhToanOnline"))
+    {
+        @Html.ValidationSummary(true)
+        <thead>
+            <tr></tr>
+            <tr></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Họ tên khách hàng</td>
+                <td>@kh.TENKH</td>
+            </tr>
+            <tr>
+                <td>Giới Tính</td>
+                <td>@kh.GIOITINH</td>
+            </tr>
+            <tr>
+                <td>CMND/CCCD</td>
+                <td>@kh.CMND_CCCD_KH</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@kh.EMAIL</td>
+            </tr>
+            <tr>
+                <td>Ngày Đặt Tour</td>
+                <td>@DateTime.Now.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td> <input type="submit" value="Xác nhận thanh toán" /></td>
+            </tr>
+        </tbody>
+    }
+
+</table>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<travelH2tour.Models.PHIEUDATTOUR>
+
+@{
+    ViewBag.Title = "DS_PDT";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<h2>DS_PDT</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MANV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYDAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dathanhtoan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MANV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYDAT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dathanhtoan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAPDT }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAPDT }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAPDT })
+        </td>
+    </tr>
+}
+
+</table>

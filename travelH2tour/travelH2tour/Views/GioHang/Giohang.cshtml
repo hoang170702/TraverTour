@@ -1,0 +1,57 @@
+﻿@using travelH2tour.Models
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Giohang</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã Tour</th>
+            <th>Tên Loại Tour</th>
+            <th>Địa điểm</th>
+            <th>Hình Tour</th>
+            <th>Số lượng khách hàng</th>
+            <th>Ngày đi</th>
+            <th>Ngày về</th>
+            <th>Đơn giá</th>
+            <th>Thành Tiền</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="success">
+                <td>@item.iMaTour</td>
+                <td>@item.sTenLoaiTour</td>
+                <td>@item.sTenDiaDiem</td>
+                <td><img src="~/img/@item.sHinhTour" style="width:10rem"></td>
+                @using (Html.BeginForm("Update", "GioHang", new { id = item.iMaTour }))
+                {
+                    <td> <input type="text" value="@item.iSoLuongKH" name="txtSoLuong" /></td>
+                    <td> <input type="datetime" value="@item.dNgayDi" name="dateNgayDi" /></td>
+                    <td> <input type="datetime" value="@item.dNgayVe" name="dateNgayVe" /> </td>
+                    <td>@string.Format("{0:0,0}", item.dDonGia)</td>
+                    <td>@string.Format("{0:0,0}", item.dThanhTien)</td>
+                    <td> @Html.ActionLink(" ", "Delete", new { id = item.iMaTour }, new { @class = "fas fa-trash fa-2x" })</td>
+                    <td> <input type="submit" value="Update" class="btn btn-primary" /></td>
+                }
+            </tr>
+        }
+        <tr class="success">
+            <td colspan="6">Số Tour : @ViewBag.TongSoTour</td>
+            <td colspan="3">Tổng tiền : @string.Format("{0:0,0}", ViewBag.TongTien) VND</td>
+        </tr>
+        <tr class="success">
+            <td colspan="6">@Html.ActionLink("Delete ALL", "DeleteAll")</td>
+            <td colspan="2">@Html.ActionLink("Thanh Toán Trực Tiếp", "Pay")</td>
+            <td colspan="1">@Html.ActionLink("Thanh Toán Với PayPal", "PayOnl", "ThanhToanOnline")</td>
+        </tr>
+    </tbody>
+</table>
+

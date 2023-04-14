@@ -1,0 +1,58 @@
+﻿@model IEnumerable<travelH2tour.Models.CT_TOUR>
+
+@{
+    ViewBag.Title = "DS_CTT";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+<h2>DS_CTT</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYDI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOLUONGKHACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DANHGIATUKHACHHANG)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYDI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOLUONGKHACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DONGIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DANHGIATUKHACHHANG)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })  
+        </td>
+    </tr>
+}
+
+</table>

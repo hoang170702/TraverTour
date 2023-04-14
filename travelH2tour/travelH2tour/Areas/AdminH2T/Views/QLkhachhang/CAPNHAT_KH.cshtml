@@ -1,0 +1,128 @@
+﻿@model travelH2tour.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Cập nhật thông tin khách ";
+    Layout = "~/Areas/AdminH2T/Views/Shared/_LayoutAdminH2T.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger">
+                            CẬP NHẬT KHÁCH HÀNG
+                        </strong>
+                    </div>
+
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-success btn-sm" type="submit">Cập nhật</button>
+                        <a href="@Url.Action("","QLkhachhang")" class="btn btn-sm btn-primary"> <i class="fas fa-arrow-circle-left"></i>Về lại danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9 ">
+                        <div class="mb-3">
+
+                            <div class="form-group">
+                                <label for="name">Mã Khách hàng:</label>
+                                <div class = "form-control"readonly >@Model.MAKH</div>
+                            </div>
+                            <label for="name">Họ tên khách:</label>
+                            @Html.EditorFor(model => model.TENKH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TENKH, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Tài khoản:</label>
+                            @Html.EditorFor(model => model.TAIKHOAN_KH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TAIKHOAN_KH, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="name">Mật khẩu:</label>
+                            @Html.EditorFor(model => model.MATKHAU_KH, new { htmlAttributes = new { @class = "form-control", @id = "matkhau", @type = "password" } })
+                            @Html.ValidationMessageFor(model => model.MATKHAU_KH, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">CCCD:</label>
+                            @Html.EditorFor(model => model.CMND_CCCD_KH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CMND_CCCD_KH, "", new { @class = "text-danger" })
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="name">Email:</label>
+                            @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="name">Giới tính:</label>
+                            <select class="form-control" id="gioitinh" name="gioitinh">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="name">Ngày sinh:</label>
+                            @Html.EditorFor(model => model.NGAYSINH, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Hình ảnh khách hàng:</label>
+                            
+                            <div class="col-md-10">
+                                Chọn ảnh mới
+                                <input type="file" name="fileUpLoad" accept="image/jpeg, image/png, image/jpeg" onchange="previewImage()" />
+                                <img style="width:120px" src="@Url.Content("~/dbHinhKH/"+Model.HINHKHACHHANG)" />(ảnh hiện tại)
+                            </div>
+                        </div>
+                        <script>
+                            function previewImage() {
+                                var preview = document.querySelector('#imgPreview');
+                                var file = document.querySelector('#fileUpLoad').files[0];
+                                var reader = new FileReader();
+
+                                reader.onloadend = function () {
+                                    preview.src = reader.result;
+                                }
+
+                                if (file) {
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    preview.src = "#";
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <button class="btn btn-success btn-sm" type="submit">Cập nhật</button>
+                <a href="@Url.Action("","QLkhachhang")" class="btn btn-sm btn-primary"> <i class="fas fa-arrow-circle-left"></i>Về lại danh sách</a>
+            </div>
+        </div>
+    </section>
+}

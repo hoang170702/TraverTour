@@ -1,0 +1,7 @@
+﻿@model IEnumerable<travelH2tour.Models.DIADIEM>
+
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("CT_DiaDiem","DiaDiem", new {id = item.MADIADIEM})" class="dropdown-item">@item.TENDIADIEM</a>
+}
